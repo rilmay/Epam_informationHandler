@@ -19,7 +19,7 @@ public class SentenceParser extends AbstractParser {
 
     @Override
     public void parse(TextCompositeJoint parent, String parsedString) {
-        logger.info("Parsing: "+parsedString);
+        logger.info("Parsing: " + parsedString);
         parseAbstract(parent, parsedString, SENTENCE_PATTERN);
     }
 }

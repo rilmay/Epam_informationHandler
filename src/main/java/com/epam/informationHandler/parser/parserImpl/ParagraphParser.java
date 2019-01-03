@@ -17,7 +17,7 @@ public class ParagraphParser extends AbstractParser {
 
     @Override
     public void parse(TextCompositeJoint parent, String parsedString) {
-        logger.info("Parsing: "+parsedString);
+        logger.info("Parsing: " + parsedString);
         parsedString = parsedString.replaceAll("[\n\r]", " ");
         parseAbstract(parent, parsedString, PARAGRAPH_PATTERN);
     }

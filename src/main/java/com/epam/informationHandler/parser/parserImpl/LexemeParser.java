@@ -18,8 +18,8 @@ public class LexemeParser extends AbstractParser {
 
     @Override
     public void parse(TextCompositeJoint parent, String parsedString) {
-        logger.info("Parsing: "+parsedString);
-        parsedString = parsedString.replaceAll("(( - )|\\.{3}|[.,;!?])"," $1 ");
+        logger.info("Parsing: " + parsedString);
+        parsedString = parsedString.replaceAll("(( - )|\\.{3}|[.,;!?])", " $1 ");
         parseAbstract(parent, parsedString, LEXEME_PATTERN);
     }
 }

@@ -30,7 +30,7 @@ public class FiniteParser implements Parser {
         Matcher matcher = ExPattern.matcher(parsedString);
         while (matcher.find()) {
             String newComponentString = matcher.group();
-            logger.info("Successfully parsed "+whichType+": "+newComponentString);
+            logger.info("Successfully parsed " + whichType + ": " + newComponentString);
             parent.addLeaf(init(whichType, newComponentString));
             return true;
         }
@@ -46,7 +46,7 @@ public class FiniteParser implements Parser {
 
     @Override
     public void parse(TextCompositeJoint parent, String parsedString) {
-        if (parent == null){
+        if (parent == null) {
             logger.info("Null pointer accepted");
             throw new WrongInputException("Null pointer accepted");
         }
@@ -54,7 +54,7 @@ public class FiniteParser implements Parser {
         } else {
             if (parseAbstract(parent, parsedString, SYMBOL_PATTERN, "symbol")) {
             } else {
-                logger.info("Successfully parsed word: "+parsedString);
+                logger.info("Successfully parsed word: " + parsedString);
                 parent.addLeaf(new WordHandler(parsedString));
             }
         }

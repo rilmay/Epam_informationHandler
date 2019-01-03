@@ -17,7 +17,7 @@ public abstract class AbstractParser implements Parser {
     }
 
     protected void parseAbstract(TextCompositeJoint parent, String parsedString, String PARSER_PATTERN) {
-        if (parent == null){
+        if (parent == null) {
             throw new WrongInputException("Null pointer accepted");
         }
         Pattern pattern = Pattern.compile(PARSER_PATTERN);
