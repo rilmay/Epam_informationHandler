@@ -9,6 +9,6 @@ public class TextHandler extends AbstractJointHandler {
 
     @Override
     public String read() {
-        return "\t"+super.read().trim();
+        return "\t" + super.read().trim();
     }
 }

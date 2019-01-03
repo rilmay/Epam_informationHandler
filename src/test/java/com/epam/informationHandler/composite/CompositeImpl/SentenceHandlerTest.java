@@ -8,13 +8,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SentenceHandlerTest {
-    SentenceHandler sentenceHandler;
-    WordHandler wordHandler;
-    WordHandler wordHandler2;
-    WordHandler wordHandler3;
+    private SentenceHandler sentenceHandler;
+    private WordHandler wordHandler;
+    private WordHandler wordHandler2;
+    private WordHandler wordHandler3;
 
     @BeforeTest
-    public void init(){
+    public void init() {
         sentenceHandler = new SentenceHandler();
         wordHandler = new WordHandler("I");
         wordHandler2 = new WordHandler("am");
@@ -24,25 +24,25 @@ public class SentenceHandlerTest {
     }
 
     @Test
-    public void testAddLeaf(){
+    public void testAddLeaf() {
         sentenceHandler.addLeaf(wordHandler3);
-        Assert.assertEquals(" I am Nikita",sentenceHandler.read());
+        Assert.assertEquals(sentenceHandler.read(), " I am Nikita");
         sentenceHandler.deleteLeaf(wordHandler3);
     }
 
     @Test
-    public void testDeleteLeaf(){
+    public void testDeleteLeaf() {
         sentenceHandler.deleteLeaf(wordHandler);
-        Assert.assertEquals(" am",sentenceHandler.read());
+        Assert.assertEquals(sentenceHandler.read(), " am");
     }
 
     @Test(expectedExceptions = WrongInputException.class)
-    public void testFailedAddLeaf(){
+    public void testFailedAddLeaf() {
         sentenceHandler.addLeaf(null);
     }
 
     @Test(expectedExceptions = WrongInputException.class)
-    public void testFailedDeleteLeaf(){
+    public void testFailedDeleteLeaf() {
         sentenceHandler.deleteLeaf(wordHandler3);
     }
 

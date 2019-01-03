@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class SymbolHandlerTest {
 
-    SymbolHandler symbolHandler;
+    private SymbolHandler symbolHandler;
 
     @BeforeTest
     public void init() {
@@ -16,6 +16,6 @@ public class SymbolHandlerTest {
 
     @Test
     public void testRead() {
-        Assert.assertEquals(" -", symbolHandler.read());
+        Assert.assertEquals(symbolHandler.read(), " -");
     }
 }

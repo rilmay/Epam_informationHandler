@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class SentenceWithSortHandler extends AbstractJointHandler {
     private final Logger logger = LogManager.getLogger(SentenceWithSortHandler.class);
     private final Comparator<TextComposite> compByAlphabet;
-    private final Comparator<TextComposite> compBySym;
+    private final Comparator<TextComposite> compBySymbol;
     private final char symbol;
 
     public SentenceWithSortHandler(char symbol) {
@@ -19,7 +19,7 @@ public class SentenceWithSortHandler extends AbstractJointHandler {
                 lex -> lex.read()
                         .replaceAll("[() ]", "")
                         .replaceAll("(?:(?!\\w)-(?!\\w))|[.,;?]", "ÿ"));
-        compBySym = Comparator.comparing(
+        compBySymbol = Comparator.comparing(
                 lex -> lex.read()
                         .replaceAll("(?i)[^" + this.symbol + "](?-i)", "")
                         .length());
@@ -27,7 +27,7 @@ public class SentenceWithSortHandler extends AbstractJointHandler {
 
     @Override
     public String read() {
-        textCompositeList.sort(compBySym.reversed().thenComparing(compByAlphabet));
+        textCompositeList.sort(compBySymbol.reversed().thenComparing(compByAlphabet));
         String sorted = super.read();
         logger.info("Following sentence is sorted by \"" + symbol + "\": " + sorted);
         return sorted;

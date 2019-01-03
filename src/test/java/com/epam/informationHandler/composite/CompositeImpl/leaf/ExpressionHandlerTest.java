@@ -6,8 +6,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class ExpressionHandlerTest {
-    ExpressionHandler expressionHandler;
-    ExpressionHandler wrongExpressionHandler;
+    private ExpressionHandler expressionHandler;
+    private ExpressionHandler wrongExpressionHandler;
 
     @BeforeTest
     public void init() {
@@ -18,12 +18,12 @@ public class ExpressionHandlerTest {
     @Test
     public void testRead() {
         Integer temp = 3 << 6;
-        Assert.assertEquals(" " + temp, expressionHandler.read());
+        Assert.assertEquals(expressionHandler.read(), " " + temp);
     }
 
     @Test
-    public void testReadWrongExpression(){
-        Assert.assertEquals(" 32<",wrongExpressionHandler.read());
+    public void testReadWrongExpression() {
+        Assert.assertEquals(wrongExpressionHandler.read(), " 32<");
     }
 
 }

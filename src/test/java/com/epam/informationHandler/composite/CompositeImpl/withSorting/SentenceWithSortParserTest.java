@@ -8,10 +8,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SentenceWithSortParserTest {
-    SentenceWithSortHandler sentenceWithSortHandler;
+    private SentenceWithSortHandler sentenceWithSortHandler;
 
     @BeforeTest
-    public void init(){
+    public void init() {
         sentenceWithSortHandler = new SentenceWithSortHandler('m');
         sentenceWithSortHandler.addLeaf(new WordHandler("truck"));
         sentenceWithSortHandler.addLeaf(new WordHandler("my"));
@@ -21,10 +21,9 @@ public class SentenceWithSortParserTest {
     }
 
     @Test
-    public void testRead(){
-        Assert.assertEquals(" mimosa muscle my truck.",sentenceWithSortHandler.read());
+    public void testRead() {
+        Assert.assertEquals(sentenceWithSortHandler.read(), " mimosa muscle my truck.");
     }
-
 
 
 }

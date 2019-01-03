@@ -2,15 +2,15 @@ package com.epam.informationHandler.parser.parserImpl;
 
 import com.epam.informationHandler.composite.compositeImpl.ParagraphHandler;
 import com.epam.informationHandler.composite.compositeInterface.TextCompositeJoint;
-import com.epam.informationHandler.parser.parserInterface.Parser;
+import com.epam.informationHandler.parser.parserInterface.TextParser;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class ParagraphParserTest {
-    String parsedString;
-    TextCompositeJoint textCompositeJoint;
-    Parser parserChain;
+    private String parsedString;
+    private TextCompositeJoint textCompositeJoint;
+    private TextParser parserChain;
 
     @BeforeTest
     public void init() {
@@ -35,7 +35,7 @@ public class ParagraphParserTest {
     @Test
     public void testParse() {
         parserChain.parse(textCompositeJoint, parsedString);
-        Assert.assertEquals(textCompositeJoint.read(), "\n\tIt has survived - not only (five) centuries, "+
+        Assert.assertEquals(textCompositeJoint.read(), "\n\tIt has survived - not only (five) centuries, " +
                 "but also the leap into 52 electronic typesetting, remaining 0 essentially 0 unchanged. It was " +
                 "popularised in the 5 with the release of Letraset sheets containing Lorem Ipsum passages, and more " +
                 "recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n" +

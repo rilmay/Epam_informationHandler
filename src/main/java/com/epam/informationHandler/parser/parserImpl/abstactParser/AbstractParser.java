@@ -2,16 +2,16 @@ package com.epam.informationHandler.parser.parserImpl.abstactParser;
 
 import com.epam.informationHandler.composite.compositeInterface.TextCompositeJoint;
 import com.epam.informationHandler.exception.WrongInputException;
-import com.epam.informationHandler.parser.parserInterface.Parser;
+import com.epam.informationHandler.parser.parserInterface.TextParser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractParser implements Parser {
-    protected Parser nextParser;
+public abstract class AbstractParser implements TextParser {
+    protected TextParser nextParser;
 
     @Override
-    public Parser linkWith(Parser parser) {
+    public TextParser linkWith(TextParser parser) {
         this.nextParser = parser;
         return nextParser;
     }

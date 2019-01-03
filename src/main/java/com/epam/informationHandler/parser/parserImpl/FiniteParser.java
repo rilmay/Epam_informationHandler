@@ -6,21 +6,21 @@ import com.epam.informationHandler.composite.compositeImpl.leaf.WordHandler;
 import com.epam.informationHandler.composite.compositeInterface.TextComposite;
 import com.epam.informationHandler.composite.compositeInterface.TextCompositeJoint;
 import com.epam.informationHandler.exception.WrongInputException;
-import com.epam.informationHandler.parser.parserInterface.Parser;
+import com.epam.informationHandler.parser.parserInterface.TextParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FiniteParser implements Parser {
+public class FiniteParser implements TextParser {
     private final Logger logger = LogManager.getLogger(FiniteParser.class);
     private final String EXPRESSION_PATTERN = "(?>[0-9><|&()^]{3,})";
     private final String SYMBOL_PATTERN = "(?>[.]{3}|[,.;!?]|(^-$))";
-    private Parser nextParser;
+    private TextParser nextParser;
 
     @Override
-    public Parser linkWith(Parser parser) {
+    public TextParser linkWith(TextParser parser) {
         this.nextParser = parser;
         return nextParser;
     }
@@ -51,12 +51,12 @@ public class FiniteParser implements Parser {
             throw new WrongInputException("Null pointer accepted");
         }
         if (parseAbstract(parent, parsedString, EXPRESSION_PATTERN, "expression")) {
-        } else {
-            if (parseAbstract(parent, parsedString, SYMBOL_PATTERN, "symbol")) {
-            } else {
-                logger.info("Successfully parsed word: " + parsedString);
-                parent.addLeaf(new WordHandler(parsedString));
-            }
+            return;
         }
+        if (parseAbstract(parent, parsedString, SYMBOL_PATTERN, "symbol")) {
+            return;
+        }
+        logger.info("Successfully parsed word: " + parsedString);
+        parent.addLeaf(new WordHandler(parsedString));
     }
 }

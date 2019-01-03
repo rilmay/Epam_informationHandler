@@ -2,15 +2,15 @@ package com.epam.informationHandler.parser.parserImpl;
 
 import com.epam.informationHandler.composite.compositeImpl.SentenceHandler;
 import com.epam.informationHandler.composite.compositeInterface.TextCompositeJoint;
-import com.epam.informationHandler.parser.parserInterface.Parser;
+import com.epam.informationHandler.parser.parserInterface.TextParser;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class LexemeParserTest {
-    Parser parserChain;
-    String parsedString;
-    TextCompositeJoint sentence;
+    private TextParser parserChain;
+    private String parsedString;
+    private TextCompositeJoint sentence;
 
     @BeforeTest
     public void init() {
@@ -28,8 +28,8 @@ public class LexemeParserTest {
 
     @Test
     public void testLinkWith() {
-        Parser testParser = new ParagraphParser();
-        Parser secondParser = new FiniteParser();
+        TextParser testParser = new ParagraphParser();
+        TextParser secondParser = new FiniteParser();
         Assert.assertEquals(testParser.linkWith(secondParser), secondParser);
     }
 }

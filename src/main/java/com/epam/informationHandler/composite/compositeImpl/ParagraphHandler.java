@@ -9,6 +9,6 @@ public class ParagraphHandler extends AbstractJointHandler {
 
     @Override
     public String read() {
-        return "\n\t"+super.read().trim();
+        return "\n\t" + super.read().trim();
     }
 }
