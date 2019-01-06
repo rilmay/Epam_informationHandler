@@ -2,6 +2,7 @@ package com.epam.informationHandler.composite.compositeImpl.withSorting;
 
 import com.epam.informationHandler.composite.compositeImpl.abstractCompositeJoint.AbstractJointHandler;
 import com.epam.informationHandler.composite.compositeInterface.TextComposite;
+import com.epam.informationHandler.utility.LoggerMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +30,7 @@ public class SentenceWithSortHandler extends AbstractJointHandler {
     public String read() {
         textCompositeList.sort(compBySymbol.reversed().thenComparing(compByAlphabet));
         String sorted = super.read();
-        logger.info("Following sentence is sorted by \"" + symbol + "\": " + sorted);
+        logger.info("Following sentence is sorted by \"" + symbol + "\": " + LoggerMessage.getShortMessage(sorted));
         return sorted;
     }
 }

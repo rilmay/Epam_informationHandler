@@ -3,6 +3,7 @@ package com.epam.informationHandler.parser.parserImpl;
 import com.epam.informationHandler.composite.compositeImpl.SentenceHandler;
 import com.epam.informationHandler.composite.compositeInterface.TextCompositeJoint;
 import com.epam.informationHandler.parser.parserImpl.abstactParser.AbstractParser;
+import com.epam.informationHandler.utility.LoggerMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +20,7 @@ public class SentenceParser extends AbstractParser {
 
     @Override
     public void parse(TextCompositeJoint parent, String parsedString) {
-        logger.info("Parsing: " + parsedString);
+        logger.info("Parsing: " + LoggerMessage.getShortMessage(parsedString));
         parseAbstract(parent, parsedString, SENTENCE_PATTERN);
     }
 }
